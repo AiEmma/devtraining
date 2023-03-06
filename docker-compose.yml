@@ -17,20 +17,21 @@ services:
     container_name: cursonestjs-db
     restart: always
     tty: true
-    environment:
-      - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=cursonestjs
     ports:
       - "5432:5432"
     volumes:
       - .docker/dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=cursonestjs
+
   pgadmin:
     image: dpage/pgadmin4
     container_name: cursonestjs-pgadmin
     tty: true
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-      - PGADMIN_DEFAUL_PASSWORD=admin
+      - PGADMIN_DEFAULT_PASSWORD=admin
     ports:
       - "8000:80"
     depends_on:
